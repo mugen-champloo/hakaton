@@ -1,1 +1,1 @@
-web: gunicorn appkel.wsgi
+web: gunicorn hakaton.appkel.wsgi
