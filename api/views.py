@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.http import JsonResponse
 from rest_framework.generics import ListAPIView
 
 
@@ -51,3 +52,4 @@ class GetRecipeCategory(ListAPIView):
 
     def get_queryset(self):
         return RecipeCategory.objects.all()
+    
