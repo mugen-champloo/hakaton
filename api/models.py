@@ -36,7 +36,7 @@ class ProductCategory(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименования блюда')
     text = models.TextField(max_length=300, verbose_name='Описание')
-    ingredients = models.ManyToManyField(Product, to_field='name', verbose_name='продукты')
+    ingredients = models.ManyToManyField(Product, verbose_name='продукты')
     image = models.CharField(max_length=300, null=True, verbose_name='ссылка на картинку')
     cooking_time = models.CharField(max_length=50, verbose_name='Время готовки')
     energy = models.IntegerField(verbose_name='Энергетическая ценность')
