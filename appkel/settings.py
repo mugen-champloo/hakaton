@@ -29,6 +29,8 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['localhost', 'hakaton-deeee0082bdc.herokuapp.com']
 ALLOWED_HOSTS = ['ddh.herokuapp.com']
+# ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition

@@ -27,6 +27,8 @@ class PhoneSerrializer(serializers.ModelSerializer):
 
 
 class ProductSerializers(serializers.ModelSerializer):
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    
     class Meta:
         model = Product
         fields = '__all__'
