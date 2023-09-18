@@ -7,5 +7,7 @@ urlpatterns = [
     path('api/prodcat/', GetProductCategoryInfo.as_view()),
     path('api/recipes/', GetRecipeInfo.as_view(), name='what_is_this'),
     path('api/reccat/', GetRecipeCategory.as_view(), name='abracadabra'),
+    path('api/register/', RegisterUser.as_view(), name='register'),
+    path('api/addphone/', RegisterPhone.as_view(), name='add_phone_number'),
     path('api/products/by_category/<int:category_id>', ProductListByCategory.as_view(), name='product-list-by-category')
 ]

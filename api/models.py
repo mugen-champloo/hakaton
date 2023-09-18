@@ -1,4 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, Group as AuthGroup
+from .validators import *
+
+
+class PhoneNumber(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+    phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Номер телефона', validators=[validate_phone_number])
+
+    def __str__(self):
+        return self.phone_number
+    
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование продукта')
@@ -41,3 +54,17 @@ class RecipeCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.CharField(max_length=50, verbose_name='Номер заказа')
+    time_ordered = models.DateTimeField(auto_now_add=True, verbose_name='Во сколько заказали')
+    adress = models.CharField(max_length=100, verbose_name='Адресс доставки')
+    complied = models.BooleanField(default=False)
+
+
+class OrederItem(models.Model):
+    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL, verbose_name="id продкта")
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='id заказа')
+
+

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,8 +27,8 @@ SECRET_KEY = 'django-insecure-wu@o=*5w_bj!l6&e%x^62j7xo=x4tw4tc#exquwcq6f@7($!7*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'hakaton-deeee0082bdc.herokuapp.com']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['localhost', 'hakaton-deeee0082bdc.herokuapp.com']
+ALLOWED_HOSTS = ['ddh.herokuapp.com']
 
 
 # Application definition
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -78,13 +79,24 @@ WSGI_APPLICATION = 'appkel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dauto816p02825',
+        'USER': 'inpucukyksztds',
+        'PASSWORD': '964122ce2e182635b942e5154f84ae5bc197cbaa6951e628faccbf373814845a',
+        'HOST': 'ec2-54-243-32-226.compute-1.amazonaws.com',
+        'PORT': '5432',       # Порт PostgreSQL сервера (по умолчанию 5432)
     }
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -122,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# 
+django_heroku.settings(locals())
 
 
 # Default primary key field type

@@ -1,16 +1,34 @@
 from django.shortcuts import render
+from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from rest_framework.generics import ListAPIView
-
-
 from .serializers import *
 from .models import *
 
 
+class RegisterUser(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RegisterPhone(APIView):
+    def post(self, request):
+        serializer = PhoneSerrializer(data=request.data)
+        if serializer.is_valid():
+            custom_user = serializer.save()
+            return Response({'id': custom_user.user.id}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 # все продукты
+
 class GetProductinfo(APIView):
     def get(self, request):
         queryset = Product.objects.all()
