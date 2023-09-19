@@ -144,6 +144,13 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # Используйте TokenAuthentication для токенов
+        # 'rest_framework.authentication.SessionAuthentication',  # Или используйте SessionAuthentication для сессий
+    ],
+}
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
