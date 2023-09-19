@@ -18,8 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PhoneSerrializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
-
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = PhoneNumber

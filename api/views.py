@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import generics
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -18,14 +19,13 @@ class RegisterUser(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class RegisterPhone(APIView):
-    def post(self, request):
-        serializer = PhoneSerrializer(data=request.data)
-        if serializer.is_valid():
-            custom_user = serializer.save()
-            return Response({'id': custom_user.user.id}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class PhoneNumberCreateView(generics.CreateAPIView):
+    queryset = PhoneNumber.objects.all()
+    serializer_class = PhoneSerrializer
 
+    def perform_create(self, serializer):
+        # Заполняем поле user текущего аутентифицированного пользователя
+        serializer.save(user=self.request.user)
 
 # все продукты
 
