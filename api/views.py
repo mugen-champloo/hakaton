@@ -19,7 +19,7 @@ class RegisterUser(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class PhoneNumberCreateView(generics.CreateAPIView):
+class RegisterPhone(generics.CreateAPIView):
     queryset = PhoneNumber.objects.all()
     serializer_class = PhoneSerrializer
 
