@@ -18,8 +18,8 @@ class Product(models.Model):
     category = models.ForeignKey('ProductCategory', null=True, on_delete=models.SET_NULL, verbose_name='Категория')
     image = models.CharField(max_length=300, null=True, verbose_name='ссылка на картинку')
     unit = models.CharField(max_length=100, verbose_name='Единица измерения')
-    quantity = models.IntegerField(verbose_name='Количество за ед.измерения')
-    price = models.FloatField(verbose_name='Цена')
+    quantity = models.FloatField(verbose_name='Количество за ед.измерения')
+    price = models.IntegerField(verbose_name='Цена')
     in_stock = models.BooleanField(default=False, verbose_name='В наличии')
 
     def __str__(self):
