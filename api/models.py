@@ -64,8 +64,10 @@ class Order(models.Model):
     complied = models.BooleanField(default=False)
 
 
-class OrederItem(models.Model):
-    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL, verbose_name="id продкта")
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='id заказа')
+# class OrederItem(models.Model):
+#     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL, verbose_name="id продкта")
+#     order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='id заказа')
 
+class mamma:
+    pass
 
