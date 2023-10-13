@@ -90,17 +90,27 @@ WSGI_APPLICATION = 'appkel.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dauto816p02825',
+#         'USER': 'inpucukyksztds',
+#         'PASSWORD': '964122ce2e182635b942e5154f84ae5bc197cbaa6951e628faccbf373814845a',
+#         'HOST': 'ec2-54-243-32-226.compute-1.amazonaws.com',
+#         'PORT': '5432',       # Порт PostgreSQL сервера (по умолчанию 5432)
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dauto816p02825',
-        'USER': 'inpucukyksztds',
-        'PASSWORD': '964122ce2e182635b942e5154f84ae5bc197cbaa6951e628faccbf373814845a',
-        'HOST': 'ec2-54-243-32-226.compute-1.amazonaws.com',
+        'NAME': 'hakaton',
+        'USER': 'postgres',
+        'PASSWORD': '357895123',
+        'HOST': '127.0.0.1',
         'PORT': '5432',       # Порт PostgreSQL сервера (по умолчанию 5432)
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
